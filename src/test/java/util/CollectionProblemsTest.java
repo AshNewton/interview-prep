@@ -250,5 +250,25 @@ public class CollectionProblemsTest {
         } catch (RuntimeException ignored) {}
     }
 
+    @Test
+    public void testRemoveDuplicates(){
+        assertEquals(Collections.emptyList(),
+                CollectionProblems.removeDuplicates(null));
 
+        assertEquals(Collections.emptyList(),
+                CollectionProblems.removeDuplicates(
+                        Collections.emptyList()));
+
+        assertEquals(List.of(1),
+                CollectionProblems.removeDuplicates(
+                        List.of(1)));
+
+        assertEquals(List.of(1),
+                CollectionProblems.removeDuplicates(
+                        List.of(1, 1)));
+
+        assertEquals(List.of(1,2,3,4),
+                CollectionProblems.removeDuplicates(
+                        List.of(1,2,3,4)));
+    }
 }

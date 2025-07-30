@@ -112,4 +112,12 @@ public class CollectionProblems {
 
         return secondBiggest;
     }
+
+    public static <T> List<T> removeDuplicates(List<T> list) {
+       if (CollectionUtils.isEmpty(list)) {
+           return Collections.emptyList();
+       }
+
+       return new ArrayList<>(new HashSet<>(list));
+    }
 }
