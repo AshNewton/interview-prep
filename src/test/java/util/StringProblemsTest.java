@@ -99,7 +99,5 @@ public class StringProblemsTest {
 
         assertTrue(StringProblems.isPalindrome(""));
         assertTrue(StringProblems.isPalindrome("a"));
-
-
     }
 }

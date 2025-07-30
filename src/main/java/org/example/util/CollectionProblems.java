@@ -1,5 +1,7 @@
 package org.example.util;
 
+import org.springframework.util.CollectionUtils;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -24,5 +26,31 @@ public class CollectionProblems {
         });
 
         return duplicates;
+    }
+
+    public static <T> int binarySearch(List<Comparable<T>> list, T element) {
+
+        if (CollectionUtils.isEmpty(list)) {
+            return -1;
+        }
+
+        int low = 0;
+        int high = list.size()-1;
+
+        while (low <= high) {
+            int index = (low+high)/2;
+            Comparable<T> current = list.get(index);
+            if (current.equals(element)) {
+                return index;
+            } else if (current.compareTo(element) < 0) {
+                // go up
+                low = index+1;
+            } else {
+                // go down
+                high = index-1;
+            }
+        }
+
+        return -1; // not found
     }
 }

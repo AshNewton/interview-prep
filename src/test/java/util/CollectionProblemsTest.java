@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CollectionProblemsTest {
@@ -61,5 +62,66 @@ public class CollectionProblemsTest {
         List<Integer> duplicates = List.of(1);
 
         assertTrue(CollectionProblems.findDuplicates(list).containsAll(duplicates));
+    }
+
+    @Test
+    public void testBinarySearch(){
+        List<Comparable<Character>> test1 = List.of('a', 'b', 'c', 'd', 'e');
+        assertEquals(3, CollectionProblems.binarySearch(test1, 'd'));
+    }
+
+    @Test
+    public void testBinarySearchNotFound(){
+        List<Comparable<Character>> test1 = List.of('a', 'b', 'c', 'd', 'e');
+        assertEquals(-1, CollectionProblems.binarySearch(
+                test1,
+                'q'));
+    }
+
+    @Test
+    public void testBinarySearchFirst(){
+        List<Comparable<Character>> test1 = List.of('a', 'b', 'c', 'd', 'e');
+
+        assertEquals(0, CollectionProblems.binarySearch(
+                test1,
+                'a'));
+    }
+
+    @Test
+    public void testBinarySearchLast(){
+
+        List<Comparable<Character>> test1 = List.of('a', 'b', 'c', 'd', 'e');
+
+        assertEquals(4, CollectionProblems.binarySearch(
+                test1,
+                'e'));
+    }
+
+    @Test
+    public void testBinarySearchEmpty(){
+        assertEquals(-1, CollectionProblems.binarySearch(
+                Collections.emptyList(),
+                'a'));
+        assertEquals(-1, CollectionProblems.binarySearch(
+                null,
+                'a'));
+    }
+
+    @Test
+    public void testBinarySearchSmall(){
+        assertEquals(0, CollectionProblems.binarySearch(
+                List.of('a'),
+                'a'));
+    }
+
+    @Test
+    public void testBinarySearchNotFoundSmall(){
+        List<Comparable<Character>> test1 = List.of('a', 'b', 'c', 'd', 'e');
+        assertEquals(3, CollectionProblems.binarySearch(test1, 'd'));
+
+
+        assertEquals(-1, CollectionProblems.binarySearch(
+                List.of('a'),
+                'q'));
     }
 }
