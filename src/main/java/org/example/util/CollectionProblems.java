@@ -89,4 +89,8 @@ public class CollectionProblems {
 
         return result;
     }
+
+    public static <K, V> List<Map.Entry<K, V>> mapToList(Map<K, V> map) {
+        return map.entrySet().stream().toList();
+    }
 }

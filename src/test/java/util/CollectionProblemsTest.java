@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -171,5 +172,23 @@ public class CollectionProblemsTest {
         List<Integer> l2 = List.of(7,8,9);
 
         assertEquals(List.of(1,2,3,7,8,9), CollectionProblems.mergeLists(l1, l2));
+    }
+
+    @Test
+    public void testMapToList() {
+        Map<Integer, Integer> map = Map.of(1,2,3,4,5,6);
+        List<Map.Entry<Integer, Integer>> expected = List.of(
+                Map.entry(1,2), Map.entry(3,4), Map.entry(5,6)
+        );
+
+        assertEquals(expected, CollectionProblems.mapToList(map));
+    }
+
+    @Test
+    public void testMapToListEmpty() {
+        Map<Integer, Integer> map = Map.of();
+        List<Map.Entry<Integer, Integer>> expected = List.of();
+
+        assertEquals(expected, CollectionProblems.mapToList(map));
     }
 }
