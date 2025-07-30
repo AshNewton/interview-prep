@@ -2,10 +2,7 @@ package org.example.util;
 
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class CollectionProblems {
 
@@ -52,5 +49,44 @@ public class CollectionProblems {
         }
 
         return -1; // not found
+    }
+
+    public static List<Integer> mergeLists(List<Integer> list1, List<Integer> list2) {
+        if (CollectionUtils.isEmpty(list1) && CollectionUtils.isEmpty(list2)) {
+            return Collections.emptyList();
+        } else if (CollectionUtils.isEmpty(list1)) {
+            return list2;
+        } else if (CollectionUtils.isEmpty(list2)) {
+            return list1;
+        }
+
+        int totalSize = list1.size() + list2.size();
+        List<Integer> result = new ArrayList<>(totalSize);
+
+        int index1 = 0, index2 = 0;
+
+        while (index1 < list1.size() && index2 < list2.size()) {
+            if (list1.get(index1) < list2.get(index2)) {
+                result.add(list1.get(index1));
+                index1++;
+            } else {
+                result.add(list2.get(index2));
+                index2++;
+            }
+        }
+
+        if (index1 < list1.size()) {
+            while (index1 < list1.size()) {
+                result.add(list1.get(index1));
+                index1++;
+            }
+        } else if (index2 < list2.size()) {
+            while (index2 < list2.size()) {
+                result.add(list2.get(index2));
+                index2++;
+            }
+        }
+
+        return result;
     }
 }

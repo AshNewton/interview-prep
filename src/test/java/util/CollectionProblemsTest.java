@@ -124,4 +124,52 @@ public class CollectionProblemsTest {
                 List.of('a'),
                 'q'));
     }
+
+    @Test
+    public void testMergeLists() {
+        List<Integer> l1 = List.of(1,2,4,5,8,9);
+        List<Integer> l2 = List.of(3,6,7);
+
+        assertEquals(List.of(1,2,3,4,5,6,7,8,9), CollectionProblems.mergeLists(l1, l2));
+    }
+
+    @Test
+    public void testMergeListsEmpty() {
+        List<Integer> l1 = List.of();
+        List<Integer> l2 = List.of();
+
+        assertEquals(Collections.emptyList(), CollectionProblems.mergeLists(l1, l2));
+    }
+
+    @Test
+    public void testMergeListsLeftEmpty() {
+        List<Integer> l1 = List.of();
+        List<Integer> l2 = List.of(1,2);
+
+        assertEquals(l2, CollectionProblems.mergeLists(l1, l2));
+    }
+
+    @Test
+    public void testMergeListsRightEmpty() {
+        List<Integer> l1 = List.of(4,8);
+        List<Integer> l2 = List.of();
+
+        assertEquals(l1, CollectionProblems.mergeLists(l1, l2));
+    }
+
+    @Test
+    public void testMergeListsDuplicates() {
+        List<Integer> l1 = List.of(2);
+        List<Integer> l2 = List.of(2);
+
+        assertEquals(List.of(2, 2), CollectionProblems.mergeLists(l1, l2));
+    }
+
+    @Test
+    public void testMergeListsEqualSize() {
+        List<Integer> l1 = List.of(1,2,3);
+        List<Integer> l2 = List.of(7,8,9);
+
+        assertEquals(List.of(1,2,3,7,8,9), CollectionProblems.mergeLists(l1, l2));
+    }
 }
