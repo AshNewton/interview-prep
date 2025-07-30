@@ -1,9 +1,9 @@
 package org.example.util;
 
 import io.micrometer.common.util.StringUtils;
+import org.springframework.util.CollectionUtils;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class StringProblems {
 
@@ -30,5 +30,17 @@ public class StringProblems {
         }
 
         return histogram;
+    }
+
+    public static List<String> sortList(List<String> list) {
+        if (CollectionUtils.isEmpty(list)) {
+            return Collections.emptyList();
+        }
+
+        List<String> copy = new ArrayList<>(list);
+
+        copy.sort(Comparator.naturalOrder());
+
+        return copy;
     }
 }

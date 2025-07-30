@@ -4,6 +4,7 @@ import org.example.util.StringProblems;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -66,5 +67,25 @@ public class StringProblemsTest {
                 ' ', s.length());
 
         testCountDuplicatesHelper(s, expected);
+    }
+
+    @Test
+    public void testSortList() {
+        List<String> words = List.of("apple", "taco", "banana");
+        List<String> expected = List.of("apple", "banana", "taco");
+
+        assertEquals(expected, StringProblems.sortList(words));
+    }
+
+    @Test
+    public void testSortListEmpty() {
+        assertEquals(Collections.emptyList(), StringProblems.sortList(null));
+        assertEquals(Collections.emptyList(), StringProblems.sortList(Collections.emptyList()));
+    }
+
+    @Test
+    public void testSortListSmall() {
+        List<String> words = List.of("apple");
+        assertEquals(words, StringProblems.sortList(words));
     }
 }
