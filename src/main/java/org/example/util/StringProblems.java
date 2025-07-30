@@ -47,4 +47,21 @@ public class StringProblems {
     public static boolean isPalindrome(String s) {
         return s != null && s.equals(reverseString(s));
     }
+
+    public static final List<Character> VOWELS = List.of('a', 'e', 'i', 'o', 'u');
+    public static int countVowels(String s) {
+        int count = 0;
+
+        if(StringUtils.isBlank(s)) {
+            return count;
+        }
+
+        for(char c: s.toCharArray()) {
+            if (VOWELS.contains(c)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }

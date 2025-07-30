@@ -100,4 +100,16 @@ public class StringProblemsTest {
         assertTrue(StringProblems.isPalindrome(""));
         assertTrue(StringProblems.isPalindrome("a"));
     }
+
+    @Test
+    public void testCountVowels() {
+        assertEquals(0, StringProblems.countVowels(null));
+        assertEquals(0, StringProblems.countVowels(""));
+        assertEquals(0, StringProblems.countVowels("   "));
+        assertEquals(0, StringProblems.countVowels("gym"));
+
+        assertEquals(2, StringProblems.countVowels("hello"));
+        assertEquals(3, StringProblems.countVowels("aaa"));
+
+    }
 }
