@@ -93,4 +93,23 @@ public class CollectionProblems {
     public static <K, V> List<Map.Entry<K, V>> mapToList(Map<K, V> map) {
         return map.entrySet().stream().toList();
     }
+
+    public static Integer findSecondHighest(List<Integer> list) {
+        if (list == null || list.size() < 2) {
+            throw new RuntimeException("need at least 2 elements to find second biggest item");
+        }
+
+        int biggest = Integer.MIN_VALUE;
+        int secondBiggest = Integer.MIN_VALUE;
+        for(Integer i : list) {
+            if (i > biggest) {
+                secondBiggest = biggest;
+                biggest = i;
+            } else if (i > secondBiggest) {
+                secondBiggest = i;
+            }
+        }
+
+        return secondBiggest;
+    }
 }

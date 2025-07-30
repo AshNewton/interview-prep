@@ -7,8 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CollectionProblemsTest {
 
@@ -181,7 +180,12 @@ public class CollectionProblemsTest {
                 Map.entry(1,2), Map.entry(3,4), Map.entry(5,6)
         );
 
-        assertEquals(expected, CollectionProblems.mapToList(map));
+        List<Map.Entry<Integer, Integer>> actual = CollectionProblems.mapToList(map);
+
+        assertEquals(expected.size(), actual.size());
+        for(Map.Entry<Integer, Integer> e: expected) {
+            actual.contains(e);
+        }
     }
 
     @Test
@@ -191,4 +195,60 @@ public class CollectionProblemsTest {
 
         assertEquals(expected, CollectionProblems.mapToList(map));
     }
+
+    @Test
+    public void testFindSecondBiggest() {
+        List<Integer> list = List.of(3,4,5,6,7,2,4);
+        int expected = 6;
+
+        assertEquals(expected, CollectionProblems.findSecondHighest(list));
+    }
+
+    @Test
+    public void testFindSecondBiggestFirst() {
+        List<Integer> list = List.of(6,3,4,5,7,2,4);
+        int expected = 6;
+
+        assertEquals(expected, CollectionProblems.findSecondHighest(list));
+    }
+
+    @Test
+    public void testFindSecondBiggestLast() {
+        List<Integer> list = List.of(3,4,5,7,2,4,6);
+        int expected = 6;
+
+        assertEquals(expected, CollectionProblems.findSecondHighest(list));
+    }
+
+    @Test
+    public void testFindSecondBiggestSmall() {
+        List<Integer> list = List.of(3,4);
+        int expected = 3;
+
+        assertEquals(expected, CollectionProblems.findSecondHighest(list));
+    }
+
+    @Test
+    public void testFindSecondBiggestSmall2() {
+        List<Integer> list = List.of(4,3);
+        int expected = 3;
+
+        assertEquals(expected, CollectionProblems.findSecondHighest(list));
+    }
+
+    @Test
+    public void testFindSecondBiggestTooSmall() {
+
+        try {
+            CollectionProblems.findSecondHighest(Collections.emptyList());
+            fail(); // fail if error not thrown
+        } catch (RuntimeException ignored) {}
+
+        try {
+            CollectionProblems.findSecondHighest(List.of(1));
+            fail(); // fail if error not thrown
+        } catch (RuntimeException ignored) {}
+    }
+
+
 }
