@@ -7,8 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StringProblemsTest {
 
@@ -87,5 +86,20 @@ public class StringProblemsTest {
     public void testSortListSmall() {
         List<String> words = List.of("apple");
         assertEquals(words, StringProblems.sortList(words));
+    }
+
+    @Test
+    public void testIsPalindrome() {
+        assertTrue(StringProblems.isPalindrome("tacocat"));
+
+        assertFalse(StringProblems.isPalindrome("waluigi"));
+        assertFalse(StringProblems.isPalindrome("tacocAt"));
+
+        assertFalse(StringProblems.isPalindrome(null));
+
+        assertTrue(StringProblems.isPalindrome(""));
+        assertTrue(StringProblems.isPalindrome("a"));
+
+
     }
 }

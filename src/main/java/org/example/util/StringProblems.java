@@ -43,4 +43,8 @@ public class StringProblems {
 
         return copy;
     }
+
+    public static boolean isPalindrome(String s) {
+        return s != null && s.equals(reverseString(s));
+    }
 }
